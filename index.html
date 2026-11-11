@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Annon — Websites & Assistants for Businesses</title>
+<meta name="description" content="Annon designs fast, beautiful websites and booking assistants for businesses that run on WhatsApp. Live in days, not months." />
+<style>
+  :root{
+    --bg:#0c0f10; --panel:#12181a; --panel2:#171f22; --line:#223033;
+    --text:#eef4f3; --muted:#9db3b0; --teal:#37c8c0; --teal-dim:#1d7a76;
+    --gold:#d9a441; --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* Nav */
+  header{position:sticky;top:0;background:rgba(12,15,16,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .logo{font-size:1.35rem;font-weight:800;letter-spacing:.14em}
+  .logo span{color:var(--teal)}
+  .nav-links{display:flex;gap:26px;font-size:.95rem;color:var(--muted)}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  .btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.95rem;transition:.2s;border:1px solid transparent}
+  .btn-wa{background:#22c05e;color:#04160a}
+  .btn-wa:hover{background:#2ad06a}
+  .btn-ghost{border-color:var(--teal-dim);color:var(--teal)}
+  .btn-ghost:hover{background:rgba(55,200,192,.08)}
+  .btn-sm{padding:9px 18px;font-size:.88rem}
+
+  /* Hero */
+  .hero{padding:84px 0 64px;text-align:center;background:radial-gradient(ellipse 70% 50% at 50% -10%,rgba(55,200,192,.14),transparent 70%)}
+  .kicker{color:var(--gold);letter-spacing:.28em;font-size:.78rem;font-weight:700;text-transform:uppercase}
+  .hero h1{font-size:clamp(2.1rem,5.4vw,3.4rem);line-height:1.15;margin:18px auto 16px;max-width:760px;font-weight:800}
+  .hero h1 em{font-style:normal;color:var(--teal)}
+  .hero p{color:var(--muted);max-width:580px;margin:0 auto 30px;font-size:1.08rem}
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-note{margin-top:20px;font-size:.88rem;color:var(--muted)}
+  .hero-note b{color:var(--text)}
+
+  /* Sections */
+  section{padding:64px 0}
+  .sec-head{text-align:center;margin-bottom:38px}
+  .sec-head h2{font-size:1.9rem;font-weight:800}
+  .sec-head p{color:var(--muted);margin-top:8px}
+
+  /* Work */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:10px;transition:.2s}
+  .card:hover{border-color:var(--teal-dim);transform:translateY(-3px)}
+  .tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(217,164,65,.4);padding:4px 10px;border-radius:999px}
+  .card h3{font-size:1.2rem}
+  .card p{color:var(--muted);font-size:.95rem;flex:1}
+  .card a.visit{color:var(--teal);font-weight:700;font-size:.92rem}
+  .card a.visit:hover{text-decoration:underline}
+
+  /* Services */
+  .svc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  .svc h3{font-size:1.25rem;margin-bottom:10px}
+  .svc h3 i{font-style:normal;color:var(--teal);margin-right:8px}
+  .svc p{color:var(--muted);font-size:.96rem;margin-bottom:14px}
+  .svc ul{list-style:none;color:var(--muted);font-size:.94rem}
+  .svc li{padding:5px 0 5px 22px;position:relative}
+  .svc li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .step{background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);padding:28px;text-align:center}
+  .step .num{width:46px;height:46px;margin:0 auto 14px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem}
+  .step h3{margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.94rem}
+
+  /* About + CTA */
+  .about{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:36px;max-width:760px;margin:0 auto;text-align:center}
+  .about p{color:var(--muted)}
+  .about p b{color:var(--text)}
+  .cta{text-align:center;padding:70px 0 80px}
+  .cta h2{font-size:2rem;margin-bottom:12px}
+  .cta p{color:var(--muted);margin-bottom:26px}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:.88rem}
+  footer a{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo">ANNON<span>.</span></div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#process">How it works</a>
+        <a href="#about">About</a>
+      </div>
+      <a class="btn btn-wa btn-sm" href="https://wa.me/2349060791103?text=Hi%20Annon%2C%20I%20saw%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Web Design · Booking Assistants</div>
+    <h1>Your business deserves a website as serious as <em>you are.</em></h1>
+    <p>I design fast, beautiful websites and smart booking assistants for hotels, salons, clinics and stores that run on WhatsApp — live in days, not months.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-wa" href="https://wa.me/2349060791103?text=Hi%20Annon%2C%20I%20saw%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="btn btn-ghost" href="#work">See my work</a>
+    </div>
+    <div class="hero-note">Currently taking <b>a small number of new projects</b> — each one gets my full attention.</div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <p>Real, live projects — open them and try them yourself.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Hotel website</span>
+        <h3>Hotel Capitol — concept redesign</h3>
+        <p>A full homepage concept for a Lagos hotel: rooms with clear rates, instant booking enquiries straight to WhatsApp, and none of the friction of the old site.</p>
+        <a class="visit" href="https://splendorous-pika-6e122f.netlify.app" target="_blank" rel="noopener">View live →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Salon & booking</span>
+        <h3>Caremore Naturals — booking experience</h3>
+        <p>A booking-first homepage for an Ikeja salon & spa: 80+ services organised, priced and bookable in a few taps instead of endless back-and-forth chats.</p>
+        <a class="visit" href="https://gorgeous-rabanadas-eba78c.netlify.app" target="_blank" rel="noopener">View live →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Web app</span>
+        <h3>VitalScope — lab results, in plain language</h3>
+        <p>Upload a medical lab report and get every value explained in simple words, with abnormal results flagged. Built end-to-end: React, Node and AI.</p>
+        <a class="visit" href="https://vitalscope.netlify.app" target="_blank" rel="noopener">View live →</a>
+      </div>
+      <div class="card">
+        <span class="tag">AI product</span>
+        <h3>Annon AI — full-stack chatbot</h3>
+        <p>My own AI assistant product, designed and built from scratch — chat interface, user accounts, and a production backend.</p>
+        <a class="visit" href="https://annonai.netlify.app" target="_blank" rel="noopener">View live →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Assistant</span>
+        <h3>FAQ Assistant — for online stores</h3>
+        <p>An assistant that answers customer questions from a store's own FAQs and policies — and honestly says “I don't know” instead of inventing answers.</p>
+        <a class="visit" href="https://sage-pudding-520696.netlify.app" target="_blank" rel="noopener">Try the demo →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Assistant</span>
+        <h3>Customer Q&A demo</h3>
+        <p>A lightweight demo of the same idea: instant answers about delivery, returns and payment, so owners stop answering the same questions all day.</p>
+        <a class="visit" href="https://faq-assist-demo.netlify.app" target="_blank" rel="noopener">Try the demo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Services</h2>
+      <p>Every project is quoted individually — tell me about your business and I'll send a fair, fixed price before we start.</p>
+    </div>
+    <div class="grid">
+      <div class="svc" style="background:var(--panel2)">
+        <h3><i>01</i>Business Websites</h3>
+        <p>A one-page or multi-page website that makes your business look established and trustworthy.</p>
+        <ul>
+          <li>Designed around your brand</li>
+          <li>Fast on phones — where your customers are</li>
+          <li>Your own domain name, owned by you</li>
+          <li>WhatsApp chat built in</li>
+        </ul>
+      </div>
+      <div class="svc" style="background:var(--panel2)">
+        <h3><i>02</i>Booking & Ordering Pages</h3>
+        <p>For hotels, salons, clinics and food businesses tired of managing everything inside chat threads.</p>
+        <ul>
+          <li>Rooms, services or menu with clear prices</li>
+          <li>Booking requests land on your WhatsApp</li>
+          <li>No more “how much?” DMs at midnight</li>
+        </ul>
+      </div>
+      <div class="svc" style="background:var(--panel2)">
+        <h3><i>03</i>FAQ & Sales Assistants</h3>
+        <p>An assistant on your site that answers the questions customers ask every day — from your own information only.</p>
+        <ul>
+          <li>Answers delivery, returns, price questions</li>
+          <li>Easy for you to update anytime</li>
+          <li>Hands over to you on WhatsApp when needed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How it works</h2>
+      <p>Simple, transparent, no surprises.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>We talk</h3>
+        <p>A short WhatsApp chat about your business and what you need. You get a fixed quote — no obligation.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>50% to start</h3>
+        <p>Half deposit secures your slot. I design and build your site, and you see progress as it comes together.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Live in days</h3>
+        <p>Most projects launch in 3–5 days. Balance is due only when you're happy and the site is live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <div class="about">
+      <div class="sec-head" style="margin-bottom:16px"><h2>About Annon</h2></div>
+      <p>I'm <b>Annon Ibrahim</b> — a web developer and AI specialist based in Lagos, Nigeria. For the past two years I've worked on AI model evaluation and prompt engineering for international platforms, and I build full-stack web products of my own, from an AI chatbot to a medical lab-report interpreter. When I build for a business, you get both crafts at once: <b>design that earns trust, and engineering that actually works.</b></p>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>Let's build yours.</h2>
+    <p>Tell me about your business — I'll reply with ideas and a fixed quote.</p>
+    <a class="btn btn-wa" href="https://wa.me/2349060791103?text=Hi%20Annon%2C%20I%20saw%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20website%20for%20my%20business." target="_blank" rel="noopener">Start on WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    © 2026 Annon Ibrahim · Lagos, Nigeria · <a href="https://github.com/Ann0nn" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/abiodun-adediran" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://x.com/ann0nnnnn" target="_blank" rel="noopener">X</a>
+  </div>
+</footer>
+
+</body>
+</html>
